@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class MQConfiguration {
-	static final String queueName = "testQueue";
+	static final String queueName = "firstQueue";
 	static final String exchangeName = "testExchange";
 
 	@Bean
@@ -26,6 +26,6 @@ public class MQConfiguration {
 	}
 	@Bean
 	Binding binding(Queue queue, Exchange exchange) {
-		return BindingBuilder.bind(queue).to(exchange).with("test.key").noargs();
+		return BindingBuilder.bind(queue).to(exchange).with("first.key").noargs();
 	}
 }

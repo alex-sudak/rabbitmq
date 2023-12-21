@@ -24,14 +24,14 @@ public class SendController {
 
 	@GetMapping("/qe1")
 	public ResponseEntity<String> sendMessageToQ1(@RequestParam String message) {
-		rabbitTemplate.convertAndSend(exchangeName, "test.key", message);
+		rabbitTemplate.convertAndSend(exchangeName, "first.key", message);
 		log.info(message + " is send! Count send object = " + ++counter);
 
 		return ResponseEntity.ok().body("Send to Q1!");
 	}
 	@GetMapping("/qe2")
 	public ResponseEntity<String> sendMessageToQ2(@RequestParam String message) {
-		rabbitTemplate.convertAndSend(exchangeName, "test.key2", message);
+		rabbitTemplate.convertAndSend(exchangeName, "second.key", message);
 		log.info(message + " is send! Count send object = " + ++counter);
 
 		return ResponseEntity.ok().body("Send to Q2!");

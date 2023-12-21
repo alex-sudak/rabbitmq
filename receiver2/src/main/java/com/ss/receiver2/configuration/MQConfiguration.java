@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class MQConfiguration {
-	static final String queueName = "testQueue2";
+	static final String queueName = "secondQueue";
 	static final String exchangeName = "testExchange";
 
 	@Bean
@@ -28,11 +28,11 @@ public class MQConfiguration {
 	}
 	@Bean
 	Binding binding(Queue queue, Exchange exchange) {
-		return BindingBuilder.bind(queue).to(exchange).with("test.key2").noargs();
+		return BindingBuilder.bind(queue).to(exchange).with("second.key").noargs();
 	}
 
 	@RabbitListener(queues = queueName)
-	public void listen(String in) {
-		System.out.println("Message read from testQueue2 : " + in);
+	public void listen(String message) {
+		System.out.println("Message read from secondQueue : " + message);
 	}
 }

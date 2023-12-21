@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class RecieverApplication {
-	static final String queueName = "testQueue";
+	static final String queueName = "firstQueue";
 
 	@Bean
 	public Queue myQueue() {
@@ -16,8 +16,8 @@ public class RecieverApplication {
 	}
 
 	@RabbitListener(queues = queueName)
-	public void listen(String in) {
-		System.out.println("Message read from myQueue : " + in);
+	public void listen(String message) {
+		System.out.println("Message read from firstQueue : " + message);
 	}
 
 	public static void main(String[] args) {
